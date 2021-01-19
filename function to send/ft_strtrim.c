@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	ft_check_occ(char const *s1, char const *set)
+static int	ft_check_occ(char const *s1, char const *set)
 {
 	size_t	i;
 	int	j;
@@ -26,7 +26,7 @@ int	ft_check_occ(char const *s1, char const *set)
 	return (ft_strlen(set) * occ);
 }
 
-int	ft_control(char const *str, char const *rem, size_t c)
+static int	ft_control(char const *str, char const *rem, size_t c)
 {
 	int	j;
 	int	i;
@@ -39,7 +39,7 @@ int	ft_control(char const *str, char const *rem, size_t c)
 	return (-1);
 }
 
-void	ft_create_out(char *output, char const *s1, char const *set)
+static void	ft_create_out(char *output, char const *s1, char const *set)
 {
 	int	i;
 	int	l;
@@ -74,6 +74,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (output);	
 }
 
+/*
 #include <stdio.h>
 int main()
 {
@@ -85,3 +86,4 @@ int main()
 	printf("Stringa modificata:		\"%s\" \n", ft_strtrim(str, to_trim));
 	return (0);
 }
+*/

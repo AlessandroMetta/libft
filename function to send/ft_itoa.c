@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	ft_digit(int n)
+static int	ft_digit(int n)
 {
 	int	digit;
 
@@ -14,7 +14,7 @@ int	ft_digit(int n)
 	return (digit);
 }
 
-char	*ft_isneg(int n)
+static char	*ft_isneg(int n)
 {
 	char	*str;
 	int i;
@@ -33,7 +33,7 @@ char	*ft_isneg(int n)
 	return (str);
 }
 
-char	*ft_ispos(int n)
+static char	*ft_ispos(int n)
 {
 	char	*str;
 	int i;
