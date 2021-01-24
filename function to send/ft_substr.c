@@ -6,14 +6,14 @@
 /*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:02:57 by ametta            #+#    #+#             */
-/*   Updated: 2021/01/14 17:24:59 by ametta           ###   ########.fr       */
+/*   Updated: 2021/01/21 16:55:00 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*sub;
@@ -22,9 +22,9 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	if ((ft_strlen(s) - start) < 0)
 		return (NULL);
 	if (len >= (ft_strlen(s) - start))
-		sub = (char*)malloc((ft_strlen(s) - start) * sizeof(char));
+		sub = (char*)malloc((ft_strlen(s) - start + 1) * sizeof(char));
 	else if (len < (ft_strlen(s) - start))
-		sub = (char*)malloc(len * sizeof(char));	
+		sub = (char*)malloc((len + 1) * sizeof(char));
 	while (i < len && s[start] != 0)
 		sub[i++] = s[start++];
 	if (sub == NULL)
@@ -32,12 +32,3 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	sub[i] = '\0';
 	return (sub);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	char s[] = "ciao";
-	printf("\nstringa originale:	%s\n\nsub-stringa: 		%s\n\n", s, ft_substr(s, 5, 4));
-	return 0;
-}
-*/

@@ -6,7 +6,7 @@
 /*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 15:00:12 by ametta            #+#    #+#             */
-/*   Updated: 2021/01/13 15:40:57 by ametta           ###   ########.fr       */
+/*   Updated: 2021/01/20 14:50:04 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_atoi(const char *str)
 {
 	size_t	i;
 	int		sign;
-	int		num;
+	size_t	num;
 
 	num = 0;
 	i = 0;
@@ -26,7 +26,7 @@ int	ft_atoi(const char *str)
 		i++;
 	if (str[i] == '-')
 	{
-		sign *= -1;
+		sign = -1;
 		i++;
 	}
 	else if (str[i] == '+')

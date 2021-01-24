@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/20 11:06:17 by ametta            #+#    #+#             */
+/*   Updated: 2021/01/21 17:59:00 by ametta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 
@@ -11,23 +23,24 @@ static int	ft_digit(int n)
 		n /= 10;
 		digit++;
 	}
-	return (digit);
+	return (digit + 1);
 }
 
 static char	*ft_isneg(int n)
 {
 	char	*str;
-	int i;
+	int		i;
 
 	n *= -1;
 	i = ft_digit(n) + 1;
 	str = (char*)malloc(i * sizeof(char));
-	while (i-- > 0)
+	str[--i] = 0;
+	while (--i > 0)
 	{
 		str[i] = (n % 10) + 48;
 		n /= 10;
 	}
-	str[0] = '-';
+	str[i] = '-';
 	if (str == 0)
 		return (NULL);
 	return (str);
@@ -36,11 +49,12 @@ static char	*ft_isneg(int n)
 static char	*ft_ispos(int n)
 {
 	char	*str;
-	int i;
+	int		i;
 
 	i = ft_digit(n);
 	str = (char*)malloc(i * sizeof(char));
-	while (i-- >= 0)
+	str[--i] = 0;
+	while (--i >= 0)
 	{
 		str[i] = (n % 10) + 48;
 		n /= 10;
@@ -50,29 +64,44 @@ static char	*ft_ispos(int n)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+static char	*ft_minint(int n)
 {
-	if (n < 0)
+	char	*str;
+	int		i;
+
+	n /= -10;
+	i = ft_digit(n) + 2;
+	str = (char*)malloc(i * sizeof(char));
+	str[--i] = 0;
+	str[--i] = 8 + 48;
+	while (--i > 0)
 	{
-		return (ft_isneg(n));
+		str[i] = (n % 10) + 48;
+		n /= 10;
 	}
-	else if (n > 0)
-	{
-		return (ft_ispos(n));
-	}
-	else
-	{
+	str[i] = '-';
+	if (str == 0)
 		return (NULL);
-	}
+	return (str);
 }
 
-/*
-#include <stdio.h>
-int	main()
+char		*ft_itoa(int n)
 {
-	int n = -123456;
-	printf("dal numero:	%d", n);
-	printf("\nalla stringa:	\"%s\"", ft_itoa(n));
-	return (0);
+	char *str;
+
+	if (n == -0 || n == +0)
+	{
+		str = malloc(2 * sizeof(char));
+		str[0] = '0';
+		str[1] = 0;
+		return (str);
+	}
+	else if (n == -2147483648)
+		return (ft_minint(n));
+	else if (n < 0)
+		return (ft_isneg(n));
+	else if (n > 0)
+		return (ft_ispos(n));
+	else
+		return (NULL);
 }
-*/

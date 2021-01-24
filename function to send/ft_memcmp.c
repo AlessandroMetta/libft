@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcmp.c                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:03:26 by ametta            #+#    #+#             */
-/*   Updated: 2021/01/13 12:48:59 by ametta           ###   ########.fr       */
+/*   Updated: 2021/01/20 11:43:56 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	if (!n)
 		return (0);
-	while (i < n && ((unsigned char*)s1)[i] == ((unsigned char*)s1)[i])
+	while (i < n && ((unsigned char*)s1)[i] == ((unsigned char*)s2)[i])
 		i++;
 	if (i == n)
 		i--;
-	return (((unsigned char*)s1)[i] - ((unsigned char*)s1)[i]);
+	return (((unsigned char*)s1)[i] - ((unsigned char*)s2)[i]);
 }
