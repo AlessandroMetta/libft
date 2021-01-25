@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 17:02:57 by ametta            #+#    #+#             */
-/*   Updated: 2021/01/21 16:55:00 by ametta           ###   ########.fr       */
+/*   Created: 2021/01/25 10:17:58 by ametta            #+#    #+#             */
+/*   Updated: 2021/01/25 10:59:35 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	size_t	j;
 	char	*sub;
 
 	i = 0;
-	if ((ft_strlen(s) - start) < 0)
+	j = 0;
+	if (!(sub = (char*)malloc(sizeof(*s) * len + 1)))
 		return (NULL);
-	if (len >= (ft_strlen(s) - start))
-		sub = (char*)malloc((ft_strlen(s) - start + 1) * sizeof(char));
-	else if (len < (ft_strlen(s) - start))
-		sub = (char*)malloc((len + 1) * sizeof(char));
-	while (i < len && s[start] != 0)
-		sub[i++] = s[start++];
-	if (sub == NULL)
-		return (NULL);
-	sub[i] = '\0';
+	while (s[i] != 0)
+	{
+		if (i >= start && j < len)
+		{
+			sub[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	sub[j] = 0;
 	return (sub);
 }

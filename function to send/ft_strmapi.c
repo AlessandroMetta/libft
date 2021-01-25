@@ -6,7 +6,7 @@
 /*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 10:21:48 by ametta            #+#    #+#             */
-/*   Updated: 2021/01/20 15:04:37 by ametta           ###   ########.fr       */
+/*   Updated: 2021/01/25 10:41:59 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	while (s[i] != 0)
 		i++;
-	output = malloc(sizeof(char) * (i + 1));
+	if (!(output = malloc(sizeof(char) * (i + 1))))
+		return (NULL);
 	output[i] = '\0';
 	i = 0;
 	while (s[i] != 0)

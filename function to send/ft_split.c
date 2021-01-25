@@ -6,7 +6,7 @@
 /*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 11:52:24 by ametta            #+#    #+#             */
-/*   Updated: 2021/01/21 11:52:33 by ametta           ###   ########.fr       */
+/*   Updated: 2021/01/25 11:51:47 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_wc(char const *s, char const c)
 	return (wc);
 }
 
-static void	ft_size_words(char **output, const char *s, const char c)
+static char	**ft_size_words(char **output, const char *s, const char c)
 {
 	int	i;
 	int	j;
@@ -58,6 +58,7 @@ static void	ft_size_words(char **output, const char *s, const char c)
 		else
 			i++;
 	}
+	return (output);
 }
 
 static void	ft_create_out(char **output, char const *s, char const delim)

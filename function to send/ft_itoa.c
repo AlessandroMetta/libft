@@ -6,7 +6,7 @@
 /*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 11:06:17 by ametta            #+#    #+#             */
-/*   Updated: 2021/01/21 17:59:00 by ametta           ###   ########.fr       */
+/*   Updated: 2021/01/25 10:40:20 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static char	*ft_isneg(int n)
 
 	n *= -1;
 	i = ft_digit(n) + 1;
-	str = (char*)malloc(i * sizeof(char));
+	if (!(str = (char*)malloc(i * sizeof(char))))
+		return (NULL);
 	str[--i] = 0;
 	while (--i > 0)
 	{
@@ -52,7 +53,8 @@ static char	*ft_ispos(int n)
 	int		i;
 
 	i = ft_digit(n);
-	str = (char*)malloc(i * sizeof(char));
+	if (!(str = (char*)malloc(i * sizeof(char))))
+		return (NULL);
 	str[--i] = 0;
 	while (--i >= 0)
 	{
@@ -71,7 +73,8 @@ static char	*ft_minint(int n)
 
 	n /= -10;
 	i = ft_digit(n) + 2;
-	str = (char*)malloc(i * sizeof(char));
+	if (!(str = (char*)malloc(i * sizeof(char))))
+		return (NULL);
 	str[--i] = 0;
 	str[--i] = 8 + 48;
 	while (--i > 0)
@@ -91,7 +94,8 @@ char		*ft_itoa(int n)
 
 	if (n == -0 || n == +0)
 	{
-		str = malloc(2 * sizeof(char));
+		if (!(str = malloc(2 * sizeof(char))))
+			return (NULL);
 		str[0] = '0';
 		str[1] = 0;
 		return (str);
