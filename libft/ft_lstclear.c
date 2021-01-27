@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ametta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 16:16:28 by ametta            #+#    #+#             */
-/*   Updated: 2021/01/26 16:16:30 by ametta           ###   ########.fr       */
+/*   Created: 2021/01/26 16:15:50 by ametta            #+#    #+#             */
+/*   Updated: 2021/01/26 16:31:29 by ametta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list *map;
+	t_list *todel;
 
-	if (!lst || !f)
-		return (NULL);
-	if (!(map = ft_lstnew(f(lst->content))))
+	while (*lst)
 	{
-		ft_lstclear(&map, del);
-		return (NULL);
+		todel = *lst;
+		*lst = todel->next;
+		(*del)(todel->content);
+		free(todel);
 	}
-	map->next = ft_lstmap(lst->next, f, del);
-	return (map);
+	*lst = NULL;
 }

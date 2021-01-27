@@ -6,7 +6,7 @@
 #    By: ametta <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 16:15:19 by ametta            #+#    #+#              #
-#    Updated: 2021/01/26 16:15:24 by ametta           ###   ########.fr        #
+#    Updated: 2021/01/27 09:04:27 by ametta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,15 +55,15 @@ FILES	=	ft_atoi.c	\
 		ft_strmapi.c	\
 		ft_split.c	\
 
-FILES_BNS	=	./ft_lstnew.c		\
-			./ft_lstadd_front.c	\
-			./ft_lstsize.c		\
-			./ft_lstlast.c		\
-			./ft_lstadd_back.c	\
-			./ft_lstdelone.c	\
-			./ft_lstclear.c		\
-			./ft_lstiter.c		\
-			./ft_lstmap.c		\
+FILES_BNS	=	ft_lstnew.c		\
+			ft_lstadd_front.c	\
+			ft_lstsize.c		\
+			ft_lstlast.c		\
+			ft_lstadd_back.c	\
+			ft_lstdelone.c	\
+			ft_lstclear.c		\
+			ft_lstiter.c		\
+			ft_lstmap.c		\
 
 
 OBJS = $(FILES:.c=.o)
@@ -77,7 +77,7 @@ $(NAME):	$(OBJS)
 			ranlib $(NAME)
 
 bonus:		$(OBJS_BNS)
-			$(AR) $(NAME) $(OBJ_BNS)
+			$(AR) $(NAME) $(OBJS_BNS)
 			ranlib $(NAME)
 
 clean:
